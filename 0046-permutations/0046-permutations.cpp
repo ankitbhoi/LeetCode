@@ -19,11 +19,13 @@ public:
     }
     vector<vector<int>> permute(vector<int>& nums) {
         vector<int>ds;
-        //int s=nums.size();
-        int freq[nums.size()];
-        for(int i=0;i<nums.size();i++){
-            freq[i]=0;
-        }
+        // int s=nums.size();
+        // int freq[s]={0};
+        int freq[6]={0};
+        // int freq[nums.size()];
+        // for(int i=0;i<nums.size();i++){
+        //     freq[i]=0;
+        // }
         perm(0,ds,nums,freq);
         return ans;
     }
