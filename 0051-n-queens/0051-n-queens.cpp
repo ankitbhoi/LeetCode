@@ -45,10 +45,10 @@ public:
     }
     vector<vector<string>> solveNQueens(int n) {
         //creating the board
-        vector<string>board;
+        vector<string>board(n);
         string s(n,'.');
         for(int i=0;i<n;i++){
-            board.push_back(s);
+            board[i]=s;
         }
         solve(0,board,n);
         return ans;
