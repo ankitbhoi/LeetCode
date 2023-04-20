@@ -3,7 +3,7 @@ public:
     int minPath(int row,int col,int m,int n,vector<vector<int>>&dp,vector<vector<int>>&grid){
         
         if(row>=m || col>=n){
-            return 40000;
+            return 10000000;
         }
         
         if(row==m-1 && col==n-1){
