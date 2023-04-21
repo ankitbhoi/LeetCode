@@ -39,7 +39,7 @@ public:
         
         int target=sum/2;
         
-        vector<vector<int>>dp(nums.size(),vector<int>(101001,-1));
+        vector<vector<int>>dp(nums.size(),vector<int>(target+1,-1));
         return partition(0,dp,nums,target);
     }
 };
