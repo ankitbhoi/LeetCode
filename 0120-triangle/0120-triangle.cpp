@@ -5,9 +5,9 @@ public:
             return 0;
         }
         
-        if(row==n-1){
-            return triangle[row][col];
-        }
+        // if(row==n-1){
+        //     return triangle[row][col];
+        // }
         
         if(dp[row][col]!=-1){
             return dp[row][col];
