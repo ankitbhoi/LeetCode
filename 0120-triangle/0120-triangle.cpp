@@ -1,7 +1,7 @@
 class Solution {
 public:
     int mint(int row,int col,int n,vector<vector<int>>&dp,vector<vector<int>>& triangle){
-        if(row>=n || col>=n){
+        if(row>=n){
             return 0;
         }
         
