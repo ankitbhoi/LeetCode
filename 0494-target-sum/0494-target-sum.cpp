@@ -24,7 +24,7 @@ int T;
     }
     int findTargetSumWays(vector<int>& nums, int target) {
         T = target; 
-        vector<vector<int>>dp(nums.size(),vector<int>(target+2005,-1));
+        vector<vector<int>>dp(nums.size(),vector<int>(target+2001,-1));
         return findtargets(0,dp,nums,0);
     }
 };
