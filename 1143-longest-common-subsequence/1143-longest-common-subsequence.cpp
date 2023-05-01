@@ -1,7 +1,9 @@
 class Solution {
 public:
-    int subsequence(int ind1,int ind2,vector<vector<int>>&dp,string &text1,string &text2){
-        if(ind1>=text1.size() || ind2>=text2.size()){
+    int dp[1001][1001];
+    string txt1,txt2;
+    int subsequence(int ind1,int ind2){
+        if(ind1==txt1.size() || ind2==txt2.size()){
             return 0;
         }
         
@@ -9,17 +11,20 @@ public:
             return dp[ind1][ind2];
         }
         
-        if(text1[ind1]==text2[ind2]){
-            return dp[ind1][ind2]= 1 + subsequence(ind1+1,ind2+1,dp,text1,text2);
+        if(txt1[ind1]==txt2[ind2]){
+            return dp[ind1][ind2]= 1 + subsequence(ind1+1,ind2+1);
         }
         else{
-            return dp[ind1][ind2]= max(subsequence(ind1+1,ind2,dp,text1,text2),subsequence(ind1,ind2+1,dp,text1,text2));
+            return dp[ind1][ind2]=max(subsequence(ind1+1,ind2),subsequence(ind1,ind2+1));
         }
-        
     }
                                    
     int longestCommonSubsequence(string text1, string text2) {
-        vector<vector<int>>dp(1001,vector<int>(1001,-1));
-        return subsequence(0,0,dp,text1,text2);
+        txt1=text1;
+        txt2=text2;
+        
+        memset(dp,-1,sizeof(dp));
+        
+        return subsequence(0,0);
     }
 };
