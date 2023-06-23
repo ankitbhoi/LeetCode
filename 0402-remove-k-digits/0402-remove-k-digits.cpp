@@ -1,41 +1,36 @@
-#include <string>
-#include <stack>
-#include <algorithm>
-
 class Solution {
 public:
-    std::string removeKdigits(std::string num, int k) {
-        std::stack<char> st;
-        std::string ans;
-
-        if (num.length() == k)
+     string removeKdigits(string num, int k)
+     {   stack<char> st;
+         string ans;
+         if(num.length()==k)
             return "0";
-
-        for (char c : num) {
-            while (!st.empty() && k > 0 && st.top() > c) {
-                st.pop();
-                k--;
-            }
-            st.push(c);
+         // st.push(num[0]);
+         for(int i=0;i<num.length();i++)
+         {
+             while(!st.empty() && st.top()>num[i] && k>0)
+             {
+                   st.pop();
+                   k--;
+             }
+            st.push(num[i]);
         }
-
-        while (!st.empty() && k > 0) {
+        while(!st.empty() && k>0)
+         {
             st.pop();
             k--;
-        }
-
-        while (!st.empty()) {
+         }
+         while(!st.empty())
+         {
             ans.push_back(st.top());
             st.pop();
-        }
-
-        reverse(ans.begin(), ans.end());
-
-        // Remove leading zeros
-        while (!ans.empty() && ans.front() == '0') {
+         }
+         reverse(ans.begin(),ans.end());
+         while (!ans.empty() && ans.front() == '0') {
             ans.erase(ans.begin());
         }
 
         return ans.empty() ? "0" : ans;
-    }
+     }
+       
 };
