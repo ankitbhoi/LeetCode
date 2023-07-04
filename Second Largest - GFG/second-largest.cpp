@@ -10,20 +10,25 @@ public:
 	// Function returns the second
 	// largest elements
 	int print2largest(int arr[], int n) {
-	    int large=INT_MIN;
-	    int second_large=-1;
-	    if(n==0 || n==1)
-            return -1;
-	    for(int i=0;i<n;i++){
-	        large=max(large,arr[i]);
-	    }
-	    for(int i=0;i<n;i++){
-	        if(arr[i]>second_large && arr[i]!=large){
-	            second_large=arr[i];
-	        }
-	    }
-	    return second_large;
-	}
+    int largest = 0;
+    int secondLargest = -1;
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > arr[largest]) {
+            secondLargest = largest;
+            largest = i;
+        } else if (arr[i] != arr[largest]) {
+            if (secondLargest == -1 || arr[i] > arr[secondLargest])
+                secondLargest = i;
+        }
+    }
+
+    if (secondLargest == -1)
+        return -1; // No second-largest element found
+    else
+        return arr[secondLargest];
+}
+
 };
 
 //{ Driver Code Starts.
