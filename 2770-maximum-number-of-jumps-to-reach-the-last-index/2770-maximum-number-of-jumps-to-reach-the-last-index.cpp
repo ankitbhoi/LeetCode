@@ -18,12 +18,7 @@ public:
     int maximumJumps(vector<int>& nums, int target) {
         vector<int>dp(nums.size(),-1);
         int ans=maximumJump(0,nums,dp,target);
-        if(ans>0){
-            return ans;
-        }
-        else{
-            return -1;
-        } 
+        return (ans<=0)?-1:ans;
         
     }
 };
