@@ -9,17 +9,30 @@ public:
     vector<int> singleNumber(vector<int> nums) 
     {
         // Code here.
-        map<int,int>mp;
-        for(int i = 0 ;  i<nums.size() ; i++ ){
-            mp[nums[i]]++;
+        int  xorr=0;
+        for(auto it:nums){
+            xorr^=it;
         }
-        vector<int>ans;
-        for(auto i:mp){
-            if(i.second==1){
-                ans.push_back(i.first);
+        
+        int count =0;
+        while(xorr){
+            if(xorr & 1){
+                break;
+            }
+            count++;
+            xorr=xorr>>1;
+        }
+        
+        int setNum=0,unsetNum=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i] & (1<<count)){
+                setNum=setNum ^ nums[i];
+            }
+            else{
+                unsetNum=unsetNum ^ nums[i];
             }
         }
-        return ans;
+        return {min(setNum, unsetNum), max(setNum, unsetNum)};
     }
 };
 
