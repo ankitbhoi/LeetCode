@@ -32,7 +32,11 @@ public:
                 unsetNum=unsetNum ^ nums[i];
             }
         }
-        return {min(setNum, unsetNum), max(setNum, unsetNum)};
+        vector<int>ans;
+        ans.push_back(setNum);
+        ans.push_back(unsetNum);
+        sort(ans.begin(), ans.end());
+        return ans;
     }
 };
 
